@@ -133,7 +133,10 @@ int raw_udp_send(char *src_addr, char *src_port, char *dst_addr, char *dst_port)
     char c = 0;
     int count = 0;
     while ((c != '\n') && (count < MAX_LEN)) {
-        scanf("%c", &c);
+        int n = scanf("%c", &c);
+        if (n == EOF) {
+            break;
+        }
         Data[count++] = c;
     }
     
