@@ -123,6 +123,8 @@ void udpPacketSend(struct sockaddr_in *srcHost, struct sockaddr_in *dstHost, cha
     udpHeader->check = checkSum((unsigned short*)pse, pseLen);
     sendto(st, buf, ipLen, 0, (struct sockaddr*)dstHost, sizeof(struct sockaddr_in));
     close(st);
+    free(buf);
+    free(pse);
 }
 
 int raw_udp_send(char *src_addr, char *src_port, char *dst_addr, char *dst_port) {
